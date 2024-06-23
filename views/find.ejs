@@ -1,0 +1,37 @@
+<%- include("./partials/header.ejs") %>
+<style>
+    :root {
+      --foreground-color: #1f2260;
+      --background-color: #35307a;
+      --texture-color: #484bb6;
+      --bar-color: #8a207c;
+      --border-color: #bd7d4f;
+      --nav-color: #262538; /* opacity add after */
+      --text-color1: #ffffff;
+      --text-color2: rgb(255, 255, 66);
+      --astronaut: #262a6e;
+    }
+
+    .block{
+      background-color: var(--foreground-color);
+      border-radius: 15px;
+      width: 100%;
+      margin-bottom: 20px;
+    }
+    .block1{
+        height: 100px;
+    }
+    .block2{
+        height: 200px;
+    }
+    .footer{
+        position: absolute;
+        bottom: 0;
+    }
+  
+  </style>
+  <div class=" block block1"></div> 
+  <div class=" block block2"></div> 
+
+
+<%- include("./partials/footer.ejs") %>

@@ -1,0 +1,42 @@
+<%- include("./partials/header.ejs") %>
+<style>
+    :root {
+      --foreground-color: #1f2260;
+      --background-color: #35307a;
+      --texture-color: #484bb6;
+      --bar-color: #8a207c;
+      --border-color: #bd7d4f;
+      --nav-color: #262538; /* opacity add after */
+      --text-color1: #ffffff;
+      --text-color2: rgb(255, 255, 66);
+      --astronaut: #262a6e;
+    }
+    .weather {
+      background-color: var(--foreground-color);
+      border-radius: 15px;
+      width: 100%;
+      height: 70px;
+
+    }
+    .grid-block{
+      display: grid;
+      gap: 10px;
+    }
+    
+  
+  </style>
+  <div class="grid-block">
+    <div class="weather block1"></div>
+    <div class="weather block2"></div>
+    <div class="weather block3"></div>
+    <div class="weather block3"></div>
+    <div class="weather block3"></div>
+    <div class="weather block3"></div>
+    <div class="weather block3"></div>
+    <div class="weather block3"></div>
+    <div class="weather block3"></div>
+    <div class="weather block3"></div>
+  </div>
+
+
+<%- include("./partials/footer.ejs") %>

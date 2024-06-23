@@ -5,26 +5,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>My project</title>
     <link href="styles/main.css" rel="stylesheet" />
-    <link href="../public/styles/main.css" rel="stylesheet" />
-    <!--for live dsigning-->
+    <link href="styles/body.css" rel="stylesheet" />
+    <link href="styles/external.css" rel="stylesheet" />
   </head>
   <body>
     <header>
       <nav class="main-nav">
         <div class="logo">
-          <h1>WeatherX</h1>
+          <h1><a href="/">WeatherX</a></h1>
         </div>
         <div class="nav-links">
-          <a href="/">HOME</a>
-          <a href="/">FIND CITY</a>
+          <a href="/today">HOME</a>
+          <a href="/find">FIND CITY</a>
         </div>
       </nav>
-      <nav class="sub-nav">
-        <a href="/">Today</a>
-        <a href="/">Hourly</a>
-        <a href="/">Monthly</a>
-        <a href="/">Weekend</a>
-        <a href="/">Radar</a>
+    <div>
+      <nav class="sub-nav sticky">
+        <a href="/today">Today</a>
+        <a href="/hourly">Hourly</a>
+        <a href="/monthly">Monthly</a>
+        <a href="/weekend">Weekend</a>
+        <a href="/radar">Radar</a>
       </nav>
+    </div>
     </header>
     <main class="container">

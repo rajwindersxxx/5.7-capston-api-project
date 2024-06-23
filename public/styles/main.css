@@ -4,18 +4,30 @@
   --texture-color: #484bb6;
   --bar-color: #8a207c;
   --border-color: #bd7d4f;
-  --nav-color: #262538; /* oppacity add after */
+  --nav-color: #262538; /* opacity add after */
   --text-color1: #ffffff;
   --text-color2: rgb(255, 255, 66);
   --astronaut: #262a6e;
 }
 body {
+  background-color: var(--background-color);
   background-image: url("../images/texture1.png");
+  background-attachment: fixed;
   background-size: cover;
   background-repeat: no-repeat;
   color: var(--text-color1);
   margin: 0;
+  padding: 0;
 }
+header{
+  overflow: hidden;
+}
+main{
+  max-width: 900px;
+  margin: auto;
+  padding: 20px;
+}
+
 .main-nav {
   background-color: var(--bar-color);
   border-bottom: 1px solid var(--border-color);
@@ -27,10 +39,14 @@ body {
 .logo h1 {
   font-size: 3em;
   margin: 0;
+  text-decoration: none;
   background: linear-gradient(var(--text-color1), var(--border-color));
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
+}
+.logo h1 a{
+  text-decoration: none;
 }
 .nav-links {
   display: flex;
@@ -39,6 +55,8 @@ body {
   gap: 20px;
   width: 100%;
   padding-right: 20px;
+  overflow-x: hidden;
+
 }
 .nav-links a {
   color: var(--text-color1);
@@ -50,7 +68,6 @@ body {
   color: var(--text-color2);
 }
 .sub-nav {
-  width: 100%;
   height: 40px;
   background-color: var(--nav-color);
   display: flex;
@@ -72,7 +89,7 @@ body {
   border-top: 1px solid var(--border-color);
   width: 100%;
   height: 90px;
-  position: absolute;
+  position: relative;
   bottom: 0;
 }
 .copy-right{
@@ -81,3 +98,4 @@ body {
     position: absolute;
     bottom: 0;
 }
+
