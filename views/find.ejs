@@ -1,37 +1,99 @@
 <%- include("./partials/header.ejs") %>
 <style>
-    :root {
-      --foreground-color: #1f2260;
-      --background-color: #35307a;
-      --texture-color: #484bb6;
-      --bar-color: #8a207c;
-      --border-color: #bd7d4f;
-      --nav-color: #262538; /* opacity add after */
-      --text-color1: #ffffff;
-      --text-color2: rgb(255, 255, 66);
-      --astronaut: #262a6e;
-    }
+  .block {
+    background-color: var(--foreground-color);
+    border-radius: 15px;
+    width: 100%;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .block1 {
+    height: 100px;
+  }
+  .block3 {
+    height: 75px;
+  }
+  .block2 h3 {
+    margin: 10px;
+  }
 
-    .block{
-      background-color: var(--foreground-color);
-      border-radius: 15px;
-      width: 100%;
-      margin-bottom: 20px;
-    }
-    .block1{
-        height: 100px;
-    }
-    .block2{
-        height: 200px;
-    }
-    .footer{
-        position: absolute;
-        bottom: 0;
-    }
-  
-  </style>
-  <div class=" block block1"></div> 
-  <div class=" block block2"></div> 
-
-
-<%- include("./partials/footer.ejs") %>
+  #search {
+    display: flex;
+    gap: 25px;
+  }
+  #search label,
+  #search input {
+    font-size: 20px;
+    border-radius: 10px;
+    padding: 5px;
+  }
+  #search .search {
+    width: 350px;
+  }
+  #search label {
+    font-size: 30px;
+  }
+  .results,
+  .headings {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+  }
+  .block h3,
+  .block p {
+    text-align: left;
+    width: 130px;
+  }
+  .results:hover {
+    background-color: var(--border-color);
+    color: var(--background-color);
+    cursor: pointer;
+  }
+  h2{
+    margin: 5px; text-align: center;
+  }
+</style>
+<div class="block block1">
+  <form action="/search" method="post" id="search">
+    <label for="search">Search:</label>
+    <input
+      type="text"
+      name="citySearch"
+      placeholder="Enter your City"
+      class="search"
+    />
+    <input type="submit" value="Search" class="button-5" />
+  </form>
+</div>
+<% if(locals.searchResult) {%>
+<h2>Select your city below</h2>
+<div class="block block2 headings">
+  <h3>Name</h3>
+  <h3>City</h3>
+  <h3>State</h3>
+  <h3>Latitude</h3>
+  <h3>Longitude</h3>
+  <h3>Select</h3>
+</div>
+<% searchResult.forEach(element => { %>
+<form method="post" action="/submitLocation">
+  <div class="block block3 results">
+    <p><%= element.country_code %>: <%= element.name %></p>
+    <p><%= element.admin2 %></p>
+    <p><%= element.admin1 %></p>
+    <p><%= element.latitude %></p>
+    <p><%= element.longitude %></p>
+    <!--hidden form for submitting selected block-->
+    <input type="hidden" name="name" value="<%= element.name %>" />
+    <input type="hidden" name="city" value="<%= element.admin2 %>" />
+    <input type="hidden" name="state" value="<%= element.admin1 %>" />
+    <input type="hidden" name="latitude" value="<%= element.longitude %>" />
+    <input type="hidden" name="longitude" value=" <%= element.longitude %>"/>
+    <input type="submit" value="Select" class="button-5" />
+  </div>
+</form>
+<% }) %> <% } %> <% if (locals.message) { %>
+<h2 ><%= message %></h2>
+<% } %> <%- include("./partials/footer.ejs") %>
