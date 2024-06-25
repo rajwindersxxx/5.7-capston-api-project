@@ -21,9 +21,8 @@
   .grid-block {
     display: grid;
     grid-template-columns: auto;
-    grid-template-rows: auto auto;
+    grid-template-rows: 282px 30px auto;
     width: 100%;
-    min-height: 100vh;
     gap: 20px;
   }
   .block2 {
@@ -78,11 +77,6 @@ table td, table th {
   padding: 8px;
   text-align: center;
 }
-
-table tr:nth-child(even){}
-
-table tr:hover {}
-
 table th {
   padding-top: 12px;
   padding-bottom: 12px;
@@ -102,7 +96,9 @@ table td img{
       <h2 style="text-align: right;"><%= is_day %></h2>
     </div>
     <div>
-      <p><%= currentData.current.time %></p>
+      <% const currentTime =currentData.current.time.slice(11)  %>
+      <!--2024-06-25T19:15-->
+      <p><%= currentData.current.time.slice(11) %></p>
       <p class="temperature">
         <%= currentData.current.temperature_2m %><sup style="font-size: 35px"
           ><%= currentData.current_units.temperature_2m %></sup
@@ -135,7 +131,8 @@ table td img{
     </div>
     <% } %>
   </div>
-  <% const data = icons(currentData.hourly.weather_code[0],1,weatherInfo) %>
+  <h2 style="text-align: center; margin: 0;">UpComming Hours</h2>
+
   <div class="weather block3">
     <table>
       <tr class="hourly">
@@ -147,9 +144,11 @@ table td img{
         <th>Wind Speed</th>
         <th colspan="2">Cloud cover</th>
       </tr>
-        <% for(var i = 0 ; i <= 10 ; i++){%>
+      <!-- Here i select Hour variable from the time and start loop from that index[hour] on api hour variable-->
+      <% for(var i = Number(currentData.current.time.slice(11, 13)) + 1 ; i <= 24 ; i++){%>
+      <% const data = icons(currentData.hourly.weather_code[i],Number(currentData.hourly.time[i].slice(11, 13)) + 1,weatherInfo) %>
       <tr class="hourly">
-        <td><%= currentData.hourly.time[i] %> <%= currentData.hourly_units.time[0] %></td>
+        <td><%= currentData.hourly.time[i].slice(11) %> </td>
         <td><%= currentData.hourly.temperature_2m[i] %> <%= currentData.hourly_units.temperature_2m[0] %></td>
         <td><%= currentData.hourly.apparent_temperature[i] %> <%= currentData.hourly_units.apparent_temperature[0] %></td>
         <td><%= data.description %></td>
@@ -158,19 +157,20 @@ table td img{
         <td><%=  currentData.hourly.cloud_cover[i] %> <%=  currentData.hourly_units.cloud_cover[0] %></td>
         <td><img src="<%= data.image %>" rel="icon"></td>
       </tr>
-        <% } %>
+      <% } %>
     </table>
   </div>
 </div>
 <div height="100"></div>
 <%- include("./partials/footer.ejs") %>
-<% function icons(weather_code, day_code, object) {
+<% function icons(weather_code, currentHour, object) {
   var is_day ;
   var w_code = weather_code.toString();
-  if (day_code == 1) {
+  if (currentHour > 7 && currentHour < 18) {
      is_day = "day";
   } else {
      is_day = "night";
   }
+  console.log(is_day);
   return object[w_code][is_day];
 } %>

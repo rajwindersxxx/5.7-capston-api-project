@@ -82,7 +82,7 @@ app.get("/today", async (req, res) => {
       description: weather_info.description,
       iconURL: weather_info.image,
       is_day: is_day,
-      weatherInfo: weatherIcons
+weatherInfo: weatherIcons
     });
   } catch (error) {
     res.render("/");

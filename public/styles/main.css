@@ -20,6 +20,7 @@ body {
   padding: 0;
   display: grid;
   grid-template-rows: 110px auto 91px;
+  height: 100vh;
 }
 header{
   overflow: hidden;
@@ -28,7 +29,6 @@ main{
   max-width: 900px;
   margin: auto;
   padding: 20px;
-  min-height: calc( 100vh - 240px );
 }
 
 .main-nav {
