@@ -1,5 +1,5 @@
 :root {
-  --foreground-color: #1f2260;
+  --foreground-color: #1f2260d6;
   --background-color: #35307a;
   --texture-color: #484bb6;
   --bar-color: #8a207c;
@@ -26,8 +26,9 @@ header{
   overflow: hidden;
 }
 main{
-  max-width: 900px;
-  margin: auto;
+  min-width: 900px;
+  max-width: 100%;
+  margin:  0 auto;
   padding: 20px;
 }
 
@@ -100,5 +101,10 @@ main{
     width: 100%;
     position: absolute;
     bottom: 0;
+}
+.weather {
+  background-color: var(--foreground-color);
+  border-radius: 15px;
+  padding: 20px;
 }
 

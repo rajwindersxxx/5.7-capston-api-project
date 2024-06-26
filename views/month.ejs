@@ -1,42 +1,95 @@
 <%- include("./partials/header.ejs") %>
 <style>
-    :root {
-      --foreground-color: #1f2260;
-      --background-color: #35307a;
-      --texture-color: #484bb6;
-      --bar-color: #8a207c;
-      --border-color: #bd7d4f;
-      --nav-color: #262538; /* opacity add after */
-      --text-color1: #ffffff;
-      --text-color2: rgb(255, 255, 66);
-      --astronaut: #262a6e;
-    }
-    .weather {
-      background-color: var(--foreground-color);
-      border-radius: 15px;
-      width: 100%;
-      height: 70px;
-
-    }
-    .grid-block{
-      display: grid;
-      gap: 10px;
-    }
-    
-  
-  </style>
-  <div class="grid-block">
-    <div class="weather block1"></div>
-    <div class="weather block2"></div>
-    <div class="weather block3"></div>
-    <div class="weather block3"></div>
-    <div class="weather block3"></div>
-    <div class="weather block3"></div>
-    <div class="weather block3"></div>
-    <div class="weather block3"></div>
-    <div class="weather block3"></div>
-    <div class="weather block3"></div>
+  .grid-block {
+    display: grid;
+    grid-template-rows: auto;
+    gap: 10px;
+  }
+  .weather {
+    background-color: var(--foreground-color);
+    border-radius: 15px;
+    width: 100%;
+    height: 50px;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    justify-content: space-around;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 2px solid var(--border-color);
+  }
+  .weather p, .temperature{
+    font-size: 15px;
+    width: 110px;
+    text-align: center;
+  }
+  .header p{
+    font-size: 20px;
+  }
+  .header {
+    border: 1px solid var(--border-color);
+  }
+</style>
+<div class="grid-block">
+  <div class="weather header">
+    <p>Date</p>
+    <p>Temperature</p>
+    <p>Feels Like</p>
+    <p>UV index</p>
+    <p>Prescription</p>
+    <p>Wind speed</p>
+    <p>Condition</p>
+    <p>Description</p>
   </div>
-
+  <% for(var i = 1 ; i < currentData.daily.time.length ; i++) { %>
+  <% const data = icons(currentData.daily.weather_code[i],weatherInfo) %>
+  <div class="weather">
+    <p>
+      <%= currentData.daily.time[i]%>    </p>
+    <div class="temperature">
+      <p>
+        <label>Min: </label>
+        <%= currentData.daily.temperature_2m_min[i] %> <%=
+        currentData.daily_units.temperature_2m_min %>
+      </p>
+      <p>
+        <label>Max: </label>
+        <%= currentData.daily.temperature_2m_max[i] %><%=
+        currentData.daily_units.temperature_2m_max %>
+      </p>
+    </div>
+    <div class="temprature">
+      <p>
+        <label>Min: </label>
+        <%= currentData.daily.apparent_temperature_min[i] %><%=
+        currentData.daily_units.apparent_temperature_min %>
+      </p>
+      <p>
+      <label>Max: </label>
+        <%= currentData.daily.apparent_temperature_max[i] %><%=
+        currentData.daily_units.apparent_temperature_max %>
+      </p>
+    </div>
+    <p>
+      <%= currentData.daily.uv_index_max[i] %><%=
+      currentData.daily_units.uv_index_max %>
+    </p>
+    <p>
+      <%= currentData.daily.precipitation_probability_max[i] %><%=
+      currentData.daily_units.precipitation_probability_max %>
+    </p>
+    <p>
+      <%= currentData.daily.wind_speed_10m_max[i] %> Km/h
+    <p>
+      <%= data.description %>
+    </p>
+    <img src="<%= data.image %>" rel="icon"/>
+  </div>
+  <% } %>
+</div>
 
 <%- include("./partials/footer.ejs") %>
+<% function icons(weather_code, object) {
+  var w_code = weather_code.toString();
+  return object[w_code]["day"];
+} %>
