@@ -1,0 +1,244 @@
+:root {
+  --foreground-color: #1f2260d6;
+  --background-color: #35307a;
+  --texture-color: #484bb6;
+  --bar-color: #8a207c;
+  --border-color: #bd7d4f;
+  --nav-color: #262538; /* opacity add after */
+  --text-color1: #ffffff;
+  --text-color2: rgb(255, 255, 66);
+  --astronaut: #262a6e;
+}
+
+.weather {
+  background-color: var(--foreground-color);
+  border-radius: 15px;
+  padding: 20px;
+}
+
+/* Style for find.ejs main container */
+#find .block {
+  background-color: var(--foreground-color);
+  border-radius: 15px;
+  width: 100%;
+  margin: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#find .block1 {
+  height: 100px;
+}
+#find .block3 {
+  height: 75px;
+}
+#find .block2 h3 {
+  margin: 10px;
+}
+
+#find #search {
+  display: flex;
+  gap: 25px;
+}
+#find #search label,
+#find #search input {
+  font-size: 20px;
+  border-radius: 10px;
+  padding: 5px;
+}
+#find #search .search {
+  width: 350px;
+}
+#find #search label {
+  font-size: 30px;
+}
+#find .results,
+#find .headings {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+#find .block h3,
+#find .block p {
+  text-align: left;
+  width: 130px;
+}
+#find .results:hover {
+  background-color: var(--border-color);
+  color: var(--background-color);
+  cursor: pointer;
+}
+#find h2 {
+  margin: 5px;
+  text-align: center;
+}
+/* Style for hour.ejs main container */
+
+#hour .weather {
+  background-color: var(--foreground-color);
+  border-radius: 15px;
+  padding: 20px;
+}
+#hour .grid-block {
+  display: grid;
+  grid-template-columns: auto;
+  grid-template-rows: auto;
+  width: 100%;
+  gap: 20px;
+}
+
+#hour .heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+#hour .temperature {
+  font-size: 60px;
+  margin: 0;
+}
+
+#hour .header-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+#hour .header-icon img {
+  height: 120px;
+  width: 120px;
+}
+#hour table {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#hour table td,
+#hour table th {
+  border-bottom: 1px solid var(--border-color);
+  padding: 8px;
+  text-align: center;
+}
+#hour table th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: center;
+}
+#hour table td img {
+  height: 50px;
+}
+/* Style for month.ejs main container */
+
+#month .grid-block {
+  display: grid;
+  grid-template-rows: auto;
+  gap: 10px;
+}
+#month .weather {
+  background-color: var(--foreground-color);
+  border-radius: 15px;
+  width: 100%;
+  height: 50px;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  flex-basis: 1 1 0;
+  justify-content: space-around;
+  align-items: center;
+  border-bottom: 2px solid var(--border-color);
+}
+#month .weather p,
+#month .temperature {
+  font-size: 15px;
+  text-align: center;
+}
+#month .header p {
+  font-size: 20px;
+}
+#month .header {
+  border: 1px solid var(--border-color);
+}
+#month .item {
+  flex: 1 1 0;
+  width: 90px;
+}
+/* Style for today.ejs main container */
+
+#today .grid-block {
+  display: grid;
+  grid-template-columns: auto;
+  grid-template-rows: auto 30px auto;
+  width: 100%;
+  gap: 20px;
+}
+
+#today .block2 {
+  grid-row: span 2;
+}
+
+#today .heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#today .temperature {
+  font-size: 60px;
+  margin: 0;
+}
+
+#today .block1 {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  grid-template-rows: 50px auto;
+  gap: 10px;
+}
+
+#today .block1 div:nth-child(1) {
+  grid-column: span 3;
+  border-bottom: 1px solid var(--text-color1);
+}
+
+#today .block1 div:nth-child(5) {
+  grid-column: span 3;
+}
+
+#today .block1 div:nth-child(2),
+#today .block1 div:nth-child(3) {
+  border-right: 1px solid var(--text-color1);
+}
+
+#today .header-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+#today .header-icon img {
+  height: 120px;
+  width: 120px;
+}
+
+#today table {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#today table td,
+#today table th {
+  border-bottom: 1px solid var(--border-color);
+  padding: 8px;
+  text-align: center;
+}
+
+#today table th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: center;
+}
+
+#today table td img {
+  height: 50px;
+}

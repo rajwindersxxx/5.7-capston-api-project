@@ -123,6 +123,5 @@ async function fetchAndRenderWeather(req, res, viewTemplate) {
       });
   } catch (error) {
       console.error("Error fetching weather data:", error);
-      res.render("error.ejs"); // Render error page or handle error as needed
   }
 }
