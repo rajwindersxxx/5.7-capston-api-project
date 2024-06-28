@@ -83,7 +83,6 @@
   display: grid;
   grid-template-columns: auto;
   grid-template-rows: auto;
-
   gap: 20px;
 }
 
@@ -128,7 +127,9 @@
   height: 50px;
 }
 /* Style for month.ejs main container */
-
+#month {
+  max-width: 1200px;
+}
 #month .grid-block {
   display: grid;
   grid-template-rows: auto;
@@ -160,7 +161,7 @@
 }
 #month .item {
   flex: 1 1 0;
-  width: 90px;
+  width: 120px;
 }
 
 /* Style for today.ejs main container */

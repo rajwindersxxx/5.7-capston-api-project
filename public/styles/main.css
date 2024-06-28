@@ -25,6 +25,7 @@ body {
   grid-template-rows: 110px auto 91px;
   height: 100vh;
   overflow-x: hidden;
+  font-family: "Open Sans", sans-serif;
 }
 
 main {
